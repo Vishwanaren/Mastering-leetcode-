@@ -5,7 +5,6 @@ public:
         sort(nums.begin() , nums.end());
         int prod1 = nums[0] * nums[1] * nums[n-1];
         int prod2 = nums[n-1] * nums[n-2] * nums[n-3];
-        int result = max(prod1 , prod2);
-        return result;
+        return std::max(prod1 , prod2);
     }
 };
