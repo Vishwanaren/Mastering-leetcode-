@@ -4,16 +4,14 @@ private:
 public:
     NumArray(vector<int>& nums) {
         int n = nums.size();
-        pref.resize(n);
-        pref[0] = nums[0];
-        for(int i=1;i<n;i++){
-            pref[i] = pref[i-1] + nums[i];
+        pref.resize(n+1,0);
+        for(int i=0;i<n;i++){
+            pref[i+1] = pref[i] + nums[i];
         }
     }
     
     int sumRange(int left, int right) {
-        if(left==0){return pref[right];}
-        return pref[right] - pref[left-1];
+        return pref[right+1] - pref[left];
     }
 };
 
