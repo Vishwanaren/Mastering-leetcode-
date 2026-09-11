@@ -1,25 +1,20 @@
 class Solution {
 public:
-    int atmost(vector<int>& nums, int k){
-        if(k<0)return 0;
-        int l = 0;
-        int oddcnt = 0;
+    int numberOfSubarrays(vector<int>& nums, int k) {
         int count = 0;
-        for(int r = 0 ; r < nums.size() ; r++){
-            if(nums[r] % 2 != 0){
-                oddcnt++;
+        int prefixsum = 0;
+        unordered_map<int,int> map;
+        map[0] = 1;
+        for(int i = 0 ; i < nums.size() ; i++){
+            if(nums[i] % 2 != 0){
+                prefixsum++;
             }
-            while(oddcnt > k){
-                if(nums[l] % 2 != 0){
-                    oddcnt--;
-                }
-                l++;
+            int target = prefixsum - k;
+            if(map.find(target) != map.end()){
+                count += map[target];
             }
-            count += (r-l+1);
+            map[prefixsum]++;
         }
         return count;
-    }
-    int numberOfSubarrays(vector<int>& nums, int k) {
-        return atmost(nums,k) - atmost(nums,k-1);
     }
 };
