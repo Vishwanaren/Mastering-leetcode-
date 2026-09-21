@@ -2,20 +2,20 @@ class Solution {
 public:
     int canBeTypedWords(string text, string brokenLetters) {
         unordered_set<char>set(brokenLetters.begin(),brokenLetters.end());
-        int spaces = 0;
-        int broken = 0;
-        for(int i=0;i<text.size();i++){
-            if(text[i]==' '){
-                spaces++;
-            }
-            else if(set.count(text[i])){
-                broken++;
-                while(i<text.size() && text[i]!=' '){
-                    i++;
+        int typablecount = 0;
+        string word;
+        stringstream ss(text);
+        while(ss >> word){
+            int broken = 0;
+            for(char ch:word){
+                if(set.count(ch)){
+                    broken++;
                 }
-                if(i<text.size()){i--;}
+            }
+            if(broken==0){
+                typablecount++;
             }
         }
-        return spaces+1-broken;
+        return typablecount;
     }
 };
