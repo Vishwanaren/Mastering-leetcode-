@@ -2,14 +2,15 @@ class Solution {
 public:
     string makeFancyString(string s) {
         int count = 0;
+        int n = s.length();
         string ans = "";
-        for(int i=0;i<s.length();i++){
-            if(s[i]==s[i+1]){
+        ans.reserve(n);
+        for(int i=0;i<n;i++){
+            if(i>0 && s[i]==s[i-1]){
                 count++;
-                if(count>=2){continue;}
             }
-            else{count=0;}
-            ans+=s[i];
+            else{count = 1;}
+            if(count<3){ans.push_back(s[i]);}
         }
         return ans;
     }
