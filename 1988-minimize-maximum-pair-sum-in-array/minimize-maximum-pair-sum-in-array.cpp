@@ -1,6 +1,8 @@
 class Solution {
 public:
     int minPairSum(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         sort(nums.begin(),nums.end());
         int l=0;
         int r=nums.size()-1;
