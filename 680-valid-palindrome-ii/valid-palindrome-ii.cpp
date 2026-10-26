@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool validPalindrome(string s) {
+    bool validPalindrome(const string &s) {
         int left=0;
         int right=s.length()-1;
         while(left<right){
@@ -14,7 +14,7 @@ public:
         return true;
     }
 private:
-    bool isPalindrome(string &s,int left,int right){
+    bool isPalindrome(const string &s,int left,int right){
         while(left<right){
             if(s[left]!=s[right]){
                 return false;
