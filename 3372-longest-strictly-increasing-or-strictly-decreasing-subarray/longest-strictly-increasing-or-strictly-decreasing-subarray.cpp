@@ -8,14 +8,15 @@ public:
             if(nums[i]>nums[i-1]){
                 inccnt++;
                 deccnt=1;
+                maxlen=max(inccnt,maxlen);
             }
             else if(nums[i]<nums[i-1]){
                 deccnt++;
                 inccnt=1;
+                maxlen=max(deccnt,maxlen);
             }
             else{inccnt=1;
                  deccnt=1;}
-            maxlen=max({maxlen,inccnt,deccnt});
         }
         return maxlen;
     }
